@@ -1,0 +1,269 @@
+/* --- CSS Variables --- */
+:root {
+    --bg-color-start: #02010a;
+    --bg-color-end: #1b143d;
+    --glass-bg: rgba(27, 20, 61, 0.5); 
+    --card-bg: rgba(2, 1, 10, 0.7);
+    --text-color: #f0f4f8;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --shape-color-1: #ff00ff;
+    --shape-color-2: #00ffff;
+    --shape-color-3: #f7ff00;
+}
+
+/* --- Utility Class --- */
+.hidden {
+    display: none !important;
+}
+
+/* --- Global Styles --- */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, var(--bg-color-start), var(--bg-color-end));
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; 
+}
+
+/* --- Animated Background Shapes --- */
+.background-container { width: 100%; height: 100%; position: fixed; top: 0; left: 0; z-index: 0; }
+.shape { position: absolute; list-style: none; display: block; animation: floatAndRotate 20s linear infinite; bottom: -200px; }
+.shape.circle { border-radius: 50%; box-shadow: 0 0 10px var(--shape-color-1), 0 0 20px var(--shape-color-1); }
+.shape.triangle { clip-path: polygon(50% 0%, 0% 100%, 100% 100%); box-shadow: 0 0 15px var(--shape-color-2), 0 0 25px var(--shape-color-2); }
+.shape.polygon { clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); box-shadow: 0 0 12px var(--shape-color-3), 0 0 22px var(--shape-color-3); }
+.s1 { left: 10%; width: 50px; height: 50px; background-color: var(--shape-color-1); animation-delay: 1s; animation-duration: 18s; }
+.s2 { left: 20%; width: 30px; height: 30px; background-color: var(--shape-color-2); animation-delay: 3s; animation-duration: 22s; }
+.s3 { left: 35%; width: 100px; height: 100px; background-color: var(--shape-color-3); animation-delay: 0s; animation-duration: 15s; }
+.s4 { left: 50%; width: 60px; height: 60px; background-color: var(--shape-color-1); animation-delay: 5s; animation-duration: 25s; }
+.s5 { left: 65%; width: 40px; height: 40px; background-color: var(--shape-color-2); animation-delay: 2s; animation-duration: 20s; }
+.s6 { left: 85%; width: 120px; height: 120px; background-color: var(--shape-color-3); animation-delay: 4s; animation-duration: 16s; }
+.s7 { left: 90%; width: 20px; height: 20px; background-color: var(--shape-color-1); animation-delay: 8s; animation-duration: 30s; }
+@keyframes floatAndRotate { 0% { transform: translateY(0) rotate(0deg) scale(1); opacity: 1; } 50% { opacity: 0.8; } 100% { transform: translateY(-120vh) rotate(720deg) scale(0); opacity: 0; } }
+
+/* --- Selection Screen Styling --- */
+.selection-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    background: var(--glass-bg);
+    padding: 4vmin;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 var(--shadow-color);
+}
+
+.selection-title {
+    margin-bottom: 3vmin;
+    font-size: clamp(1.2rem, 4vmin, 1.8rem);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: none;
+    color: var(--shape-color-3);
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2vmin;
+}
+
+.difficulty-btn {
+    padding: 2vmin 4vmin;
+    font-size: clamp(1rem, 3.5vmin, 1.5rem);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-color);
+    background-color: transparent;
+    border: 2px solid var(--shape-color-3);
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--shape-color-3);
+    transition: all 0.3s ease;
+}
+
+.difficulty-btn:hover {
+    background-color: var(--shape-color-3);
+    color: var(--bg-color-start);
+    box-shadow: 0 0 25px var(--shape-color-3), 0 0 35px var(--shape-color-3);
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* --- Game Content Styling --- */
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    background: var(--glass-bg);
+    padding: 2vmin; 
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 var(--shadow-color);
+    width: 90vmin;
+    height: 90vmin;
+    max-width: 800px;
+    max-height: 800px;
+}
+
+.game-title {
+    text-align: center;
+    margin-bottom: 1.5vmin; 
+    font-size: clamp(2rem, 6vmin, 3rem); 
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    text-shadow: 0 0 15px var(--shape-color-2);
+}
+
+.game-info {
+    margin-bottom: 1.5vmin;
+    font-size: clamp(1rem, 4vmin, 1.5rem);
+    font-weight: 700;
+}
+
+.memory-game {
+    width: 100%;
+    display: grid;
+    gap: 1.5vmin; 
+    perspective: 1000px; 
+}
+
+.memory-card {
+    aspect-ratio: 1 / 1;
+    position: relative;
+    cursor: pointer;
+    transform-style: preserve-3d; 
+    transition: transform 0.6s;
+}
+
+.front-face, .back-face {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 10px;
+    background-color: var(--card-bg);
+    box-shadow: 0 8px 16px var(--shadow-color);
+    backface-visibility: hidden;
+    border: 2px solid var(--shape-color-2);
+}
+
+.front-face img, .back-face img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover; 
+}
+
+.front-face { transform: rotateY(180deg); }
+.memory-card.flip { transform: rotateY(180deg); }
+
+.reset-button {
+    margin-top: 1.5vmin;
+    padding: 1.5vmin 3vmin; 
+    font-size: clamp(0.8rem, 3vmin, 1.2rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-color);
+    background-color: var(--shape-color-1);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 20px var(--shape-color-1);
+    transition: all 0.3s ease;
+}
+
+.reset-button:hover {
+    box-shadow: 0 0 30px var(--shape-color-1), 0 0 40px var(--shape-color-1);
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* --- Win Screen Styling --- */
+.win-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* --- THE KEY CHANGE --- */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.win-screen.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.win-title {
+    font-size: clamp(3rem, 10vmin, 6rem);
+    text-transform: uppercase;
+    text-shadow: 0 0 20px var(--shape-color-3), 0 0 30px var(--shape-color-3);
+    color: var(--shape-color-3);
+    margin-bottom: 2vmin;
+}
+
+.win-stats {
+    font-size: clamp(1.2rem, 4vmin, 1.8rem);
+    margin-bottom: 4vmin;
+}
+
+.play-again-btn {
+    padding: 2vmin 4vmin;
+    font-size: clamp(1rem, 3.5vmin, 1.5rem);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--bg-color-start);
+    background-color: var(--shape-color-1);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 0 20px var(--shape-color-1);
+    transition: all 0.3s ease;
+}
+
+.play-again-btn:hover {
+    box-shadow: 0 0 30px var(--shape-color-1), 0 0 40px var(--shape-color-1);
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* --- Fireworks Animation Styling --- */
+.fireworks-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1px;
+    height: 1px;
+    z-index: 11;
+}
+
+.particle {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+}
+

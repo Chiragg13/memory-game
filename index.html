@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-container">
+        <div class="shape circle s1"></div>
+        <div class="shape triangle s2"></div>
+        <div class="shape polygon s3"></div>
+        <div class="shape circle s4"></div>
+        <div class="shape triangle s5"></div>
+        <div class="shape polygon s6"></div>
+        <div class="shape circle s7"></div>
+    </div>
+
+    <div class="selection-screen">
+        <h1 class="game-title">Memory Game</h1> 
+        <h1 class="selection-title">Select Difficulty</h1>
+        <div class="button-container">
+            <button class="difficulty-btn" data-tiles="10">Easy (10 Cards)</button>
+            <button class="difficulty-btn" data-tiles="20">Medium (20 Cards)</button>
+            <button class="difficulty-btn" data-tiles="30">Hard (30 Cards)</button>
+        </div>
+    </div>
+
+    <div class="game-container hidden">
+        <h1 class="game-title">Memory Game</h1>
+        <div class="game-info">
+            <span class="moves">Moves: 0</span>
+        </div>
+        <section class="memory-game"></section>
+        <button class="reset-button">Reset Game</button>
+    </div>
+
+    <div class="win-screen hidden">
+        <div class="fireworks-container"></div>
+        <h1 class="win-title">You Win!</h1>
+        <p class="win-stats">Total Moves: <span class="final-moves">0</span></p>
+        <button class="play-again-btn">Play Again</button>
+    </div>
+
+    <audio id="flip-sound" src="audio/flip.mp3"></audio>
+    <audio id="match-sound" src="audio/match.mp3"></audio>
+    <audio id="win-sound" src="audio/win.mp3" loop></audio> <script src="script.js" defer></script>
+</body>
+</html>
